@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">AppEjemploCamaraKotlin</string>
+    <string name="valbtntomarfoto">TOMAR FOTO</string>
+</resources>
