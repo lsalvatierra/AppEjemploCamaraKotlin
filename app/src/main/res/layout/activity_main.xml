@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/valbtntomarfoto"
+        app:icon="@drawable/ic_baseline_camera_alt_24"
+        app:iconGravity="textStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +27,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btntomarfoto"
         tools:src="@tools:sample/backgrounds/scenic" />
+
+    <Button
+        android:id="@+id/btncompartir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/valbtncompartirfoto"
+        app:icon="@drawable/ic_baseline_share_24"
+        app:iconGravity="textStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivfoto" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
