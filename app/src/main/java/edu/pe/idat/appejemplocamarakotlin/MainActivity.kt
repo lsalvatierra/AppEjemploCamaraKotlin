@@ -130,7 +130,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     //Llamamos a la cámara utilizando Intent implícito.
     private fun mostrarFoto() {
         val ei = ExifInterface(mRutaFotoActual)
