@@ -15,7 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import kotlinx.android.synthetic.main.activity_main.*
+import edu.pe.idat.appejemplocamarakotlin.databinding.ActivityMainBinding
+
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -26,12 +27,14 @@ class MainActivity : AppCompatActivity() {
 
     private val CAMARA_REQUEST = 1888
     var mRutaFotoActual = ""
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btntomarfoto.setOnClickListener {
+        binding.btntomarfoto.setOnClickListener {
             if(permisoEscrituraAlmacenamiento()){
                 try {
                     intencionTomarFoto()
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 solicitarPermiso()
             }
         }
-        this.btncompartir.setOnClickListener {
+        binding.btncompartir.setOnClickListener {
             if(mRutaFotoActual != ""){
                 //val uri = Uri.parse(mRutaFotoActual)
                 val contentUri = FileProvider.getUriForFile(
@@ -138,12 +141,12 @@ class MainActivity : AppCompatActivity() {
                 ExifInterface.ORIENTATION_UNDEFINED
         )
         if(orientation == ExifInterface.ORIENTATION_ROTATE_90){
-            ivfoto.rotation = 90.0F
+            binding.ivfoto.rotation = 90.0F
         }else{
-            ivfoto.rotation = 0.0F
+            binding.ivfoto.rotation = 0.0F
         }
-        val targetW: Int = ivfoto.width
-        val targetH: Int = ivfoto.height
+        val targetW: Int = binding.ivfoto.width
+        val targetH: Int = binding.ivfoto.height
         val bmOptions = BitmapFactory.Options()
         bmOptions.inJustDecodeBounds = true
         BitmapFactory.decodeFile(mRutaFotoActual, bmOptions)
@@ -153,7 +156,7 @@ class MainActivity : AppCompatActivity() {
         bmOptions.inSampleSize = scaleFactor
         bmOptions.inJustDecodeBounds = false
         val bitmap = BitmapFactory.decodeFile(mRutaFotoActual, bmOptions)
-        ivfoto.setImageBitmap(bitmap)
+        binding.ivfoto.setImageBitmap(bitmap)
 
     }
     //Grabar Foto en la galeria del dispositivo.
